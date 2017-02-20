@@ -3,11 +3,17 @@ class Vertex:
         self.edges = []
         self.used = False
 
-def dfs(graph, v):
+def dfs(graph, v, dest):
     graph[v].used = True
+    if v == dest:
+        return [v + 1]
     for i in graph[v].edges:
         if not graph[i].used:
-            dfs(graph, i)
+            path = dfs(graph, i, dest)
+            if len(path) > 0:
+                path.append(v + 1)
+                return path
+    return []
 
 f = open("input.txt", "r")
 lines = []
@@ -17,7 +23,7 @@ for line in f:
 n, m = lines[0].split()
 n = int(n)
 m = int(m)
-a, b = lines[-1].split()
+a, b = lines[m + 1].split()
 a = int(a) - 1
 b = int(b) - 1
 graph = [ Vertex() for i in range(n) ]
@@ -29,8 +35,10 @@ for i in range(1, m + 1):
     graph[u].edges.append(v)
     graph[v].edges.append(u)
 
-dfs(graph, a)
+path = dfs(graph, a, b)
 if graph[b].used:
+    path = list(reversed(path))
+    print("path:", path)
     print(1)
 else:
     print(0)
