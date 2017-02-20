@@ -10,9 +10,7 @@ def dfs(graph, v):
             dfs(graph, i)
 
 f = open("input.txt", "r")
-lines = []
-for line in f:
-    lines.append(line)
+lines = [ line for line in f ]
 
 n, m = lines[0].split()
 n = int(n)

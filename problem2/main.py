@@ -16,9 +16,7 @@ def dfs(graph, v, dest):
     return []
 
 f = open("input.txt", "r")
-lines = []
-for line in f:
-    lines.append(line)
+lines = [ line for line in f ]
 
 n, m = lines[0].split()
 n = int(n)
@@ -36,9 +34,7 @@ for i in range(1, m + 1):
     graph[v].edges.append(u)
 
 path = dfs(graph, a, b)
+path.reverse()
 if graph[b].used:
-    path = list(reversed(path))
     print("path:", path)
-    print(1)
-else:
-    print(0)
+print(int(graph[b].used))
