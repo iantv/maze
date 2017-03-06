@@ -9,13 +9,6 @@ def dfs(graph, v):
         if not graph[i].used:
             dfs(graph, i)
 
-'''f = open("input.txt", "r")
-lines = [ line for line in f ]
-
-n, m = lines[0].split()
-n = int(n)
-m = int(m)'''
-
 def graph_init(lines, n, m):
     graph = [ Vertex() for i in range(n) ]
     for i in range(1, m + 1):
