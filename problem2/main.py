@@ -1,3 +1,5 @@
+import time as time
+
 class Vertex:
     def __init__(self):
         self.edges = []
@@ -26,7 +28,8 @@ def graph_init(lines, n, m):
     return graph
 
 def solve(graph, a, b):
+    begin = time.clock()
     path = dfs(graph, a, b)
-    path.reverse()
+    print("time: %f", begin - time.clock())
     return path
     

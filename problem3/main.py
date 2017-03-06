@@ -1,3 +1,5 @@
+import time as time
+
 class Vertex:
     def __init__(self):
         self.edges = []
@@ -20,9 +22,11 @@ def graph_init(lines, n, m):
     return graph
 
 def solve(graph):
+    begin = time.clock()
     count = 0
     for i in range(len(graph)):
         if not graph[i].used:
             dfs(graph, i)
             count += 1
+    print("time: %f", begin - time.clock())
     return count
