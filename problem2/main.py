@@ -1,18 +1,18 @@
 import time as time
 
-# It's class Vertex for one Vertex in graph. Graph is array of vertex
-# attributes: used, edges
-# edges - nubmer of vertexes (indexes elements in array of Vertex)
-# used - bool , using in dfs for mark vertex
+# Класс Vertex для описания вершины в графе. Граф - массив вершин
+# Атрибуты: used(метка), edges(рёбра)
+# edges - массив, состоящий из номеров вершин, к которым существует ребро
+# used - bool, используется как метка, что вершина посещена/использована
 class Vertex:
     def __init__(self):
         self.edges = []
         self.used = False
 
 
-# It's DFS
-# input args: graph (array of Vertex), v (int - current vertex), dest (int - destination)
-# output args: path (array of int - reverse path from v to dest)
+# DFS. Поиск в глубину
+# аргументы: graph (массив из вершин(Vertex)), v (int - текущая вершина, которую сейчас посещаем), dest (int - destination. Номер вершины к которой ищем путь)
+# возвр. значения: path (путь в обратном порядке от заданной вершины v до вершины dest)
 def dfs(graph, v, dest):
     graph[v].used = True
     if v == dest:
@@ -25,9 +25,9 @@ def dfs(graph, v, dest):
                 return path
     return []
 
-# It's function for initialization graph. Graph represented as lists
-# input args: lines (array of string from test file)
-# output args: graph (array of Vertex)
+# Функция инициализирующая граф данными из файла.
+# аргументы: lines (массив строк из файла), m, n - число рёбер и вершин соответственно
+# возвр. значения: graph (массив вершин, граф в виде списков смежности)
 def graph_init(lines, n, m):
     graph = [ Vertex() for i in range(n) ]
     for i in range(1, m + 1):
@@ -38,9 +38,9 @@ def graph_init(lines, n, m):
         graph[v].edges.append(u)
     return graph
 
-# It's function for check execution time and run dfs
-# input args: graph (array of Vertex), vertexA, vertexB (int)
-# output args: path: array of int (number of vertexes)
+# Функция для измерения времени работы программы
+# аргументы: graph (граф, массив вершин), vertexA, vertexB (вершины между которыми ищем путь)
+# возвр. значения: path: array of int (путь между вершинами, массив целых чисел)
 def solve(graph, a, b):
     begin = time.clock()
     path = dfs(graph, a, b)
