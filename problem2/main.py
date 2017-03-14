@@ -44,5 +44,5 @@ def graph_init(lines, n, m):
 def solve(graph, a, b):
     begin = time.clock()
     path = dfs(graph, a, b)
-    print("time: ", begin - time.clock())
+    print("time: ", time.clock() - begin)
     return path
