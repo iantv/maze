@@ -34,7 +34,6 @@ def graph_init(lines, n, m):
     return graph
 
 def solve(graph):
-    begin = datetime.now()
     count = 0
     # Если вершина не является помеченной, то она не принадлежит ни одной компонентой связности
     # т.к. dfs гарантирует обход всего графа, следовательно все вершины одной компоненты будут помещены
@@ -44,5 +43,4 @@ def solve(graph):
         if not graph[i].used:
             dfs(graph, i)
             count += 1
-    print("time: %e" % abs((datetime.now() - begin).microseconds/1000000.0))
     return count

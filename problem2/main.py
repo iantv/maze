@@ -44,7 +44,5 @@ def graph_init(lines, n, m):
 # аргументы: graph (граф, массив вершин), vertexA, vertexB (вершины между которыми ищем путь)
 # возвр. значения: path: array of int (путь между вершинами, массив целых чисел)
 def solve(graph, a, b):
-    begin = datetime.now()
     path = dfs(graph, a, b)
-    print("time: %e" % abs(float((datetime.now() - begin).microseconds)/1000000.0))
     return path
