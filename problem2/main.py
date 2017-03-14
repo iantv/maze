@@ -1,5 +1,5 @@
-import time as time
 import sys
+from datetime import datetime
 
 sys.setrecursionlimit(10000)
 # Класс Vertex для описания вершины в графе. Граф - массив вершин
@@ -44,7 +44,7 @@ def graph_init(lines, n, m):
 # аргументы: graph (граф, массив вершин), vertexA, vertexB (вершины между которыми ищем путь)
 # возвр. значения: path: array of int (путь между вершинами, массив целых чисел)
 def solve(graph, a, b):
-    begin = time.clock()
+    begin = datetime.now()
     path = dfs(graph, a, b)
-    print("time: ", abs(begin - time.clock()))
+    print("time: %e" % abs(float((datetime.now() - begin).microseconds)/1000000.0))
     return path

@@ -1,4 +1,4 @@
-import time as time
+from datetime import datetime
 import sys
 sys.setrecursionlimit(10000)
 # Класс Vertex для описания вершины в графе. Граф - массив вершин
@@ -34,7 +34,7 @@ def graph_init(lines, n, m):
     return graph
 
 def solve(graph):
-    begin = time.clock()
+    begin = datetime.now()
     count = 0
     # Если вершина не является помеченной, то она не принадлежит ни одной компонентой связности
     # т.к. dfs гарантирует обход всего графа, следовательно все вершины одной компоненты будут помещены
@@ -44,5 +44,5 @@ def solve(graph):
         if not graph[i].used:
             dfs(graph, i)
             count += 1
-    print("time: ", abs(time.clock() - begin))
+    print("time: %e" % abs((datetime.now() - begin).microseconds/1000000.0))
     return count
