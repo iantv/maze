@@ -44,5 +44,5 @@ def solve(graph):
         if not graph[i].used:
             dfs(graph, i)
             count += 1
-    print("time: ", time.clock() - begin)
+    print("time: ", abs(time.clock() - begin))
     return count
