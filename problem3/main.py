@@ -1,5 +1,6 @@
 import time as time
-
+import sys
+sys.setrecursionlimit(10000)
 # Класс Vertex для описания вершины в графе. Граф - массив вершин
 # Атрибуты: used(метка), edges(рёбра)
 # edges - массив, состоящий из номеров вершин, к которым существует ребро
@@ -43,5 +44,5 @@ def solve(graph):
         if not graph[i].used:
             dfs(graph, i)
             count += 1
-    print("time: ", begin - time.clock())
+    print("time: ", time.clock() - begin)
     return count
